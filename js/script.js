@@ -6,6 +6,14 @@ link.forEach((item) => {
     };
 });
 
+// transform-origin: left center;
+// transform: scaleX(0);
+
+gsap.set("#loader", {
+    transformOrigin: "left center",
+    scaleX: 0,
+});
+
 // return promise on complete
 function delay(n) {
     n = n || 2000;
@@ -46,7 +54,6 @@ function PageTransition() {
         );
     return tl;
 }
-
 
 const TextAnimation = () => {
     const tl = gsap.timeline();
