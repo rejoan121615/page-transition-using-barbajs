@@ -32,6 +32,8 @@ main {
     width: 100%;
     height: 100vh;
     background-color: black;
+    transform-origin: left center;
+    transform: scaleX(0);
 }
 
 section {

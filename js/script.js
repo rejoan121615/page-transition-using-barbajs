@@ -6,10 +6,47 @@ link.forEach((item) => {
     };
 });
 
-gsap.set("#loader", {
-    transformOrigin: "left center",
-    scaleX: 0,
-});
+// return promise on complete
+function delay(n) {
+    n = n || 2000;
+    return new Promise((done) => {
+        setTimeout(() => {
+            done();
+        }, n);
+    });
+}
+
+// page animation
+function PageTransition() {
+    let tl = gsap.timeline();
+    tl.set("#loader", {
+        transformOrigin: "left center",
+    })
+        .fromTo(
+            "#loader",
+            {
+                scaleX: "0",
+            },
+            {
+                scaleX: "1",
+            }
+        )
+
+        .set("#loader", {
+            transformOrigin: "right center",
+        })
+        .fromTo(
+            "#loader",
+            {
+                scaleX: "1",
+            },
+            {
+                scaleX: "0",
+            }
+        );
+    return tl;
+}
+
 
 const TextAnimation = () => {
     const tl = gsap.timeline();
@@ -42,42 +79,20 @@ const TextAnimation = () => {
 };
 
 barba.init({
+    sync: true,
     transitions: [
         {
-            name: "page-transition",
-            leave(data) {
-                console.log('leave', data)
-                return gsap
-                    .timeline()
-                    .set("#loader", {
-                        transformOrigin: "left center",
-                    })
-                    .fromTo(
-                        "#loader",
-                        {
-                            scaleX: "0",
-                        },
-                        {
-                            scaleX: "1",
-                        }
-                    )
+            async leave(data) {
+                const done = this.async();
+                PageTransition();
+                await delay(500);
+                done();
             },
-            enter(data) {
-                console.log('enter', data)
-                return gsap
-                    .timeline()
-                    .set("#loader", {
-                        transformOrigin: "right center",
-                    })
-                    .fromTo(
-                        "#loader",
-                        {
-                            scaleX: "1",
-                        },
-                        {
-                            scaleX: "0",
-                        }
-                    )
+            async enter() {
+                TextAnimation();
+            },
+            async once() {
+                TextAnimation();
             },
         },
     ],
