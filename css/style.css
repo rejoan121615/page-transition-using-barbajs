@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  height: 100vh;
+  padding-top: 100px;
+  background-color: wheat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-wrap h1,
+.text-wrap h3 {
+  text-align: center;
+  --clip: 100%;
+  --clip: 0;
+  clip-path: inset(0 var(--clip) 0 0);
+}
+
+#loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 500;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+}
+
+section {
+  width: 100%;
+  height: 100vh;
+}
+
+/*# sourceMappingURL=style.css.map */
