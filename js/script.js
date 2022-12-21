@@ -96,9 +96,11 @@ barba.init({
                 done();
             },
             async enter() {
+                TextAnimation().clear();
                 TextAnimation();
             },
             async once() {
+                TextAnimation().clear();
                 TextAnimation();
             },
         },

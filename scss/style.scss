@@ -19,7 +19,6 @@ main {
     h3 {
         text-align: center;
         --clip: 100%;
-        --clip: 0;
         clip-path: inset(0 var(--clip) 0 0);
     }
 }
