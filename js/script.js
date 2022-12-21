@@ -37,6 +37,8 @@ function PageTransition() {
             },
             {
                 scaleX: "1",
+                duration: "0.7",
+                ease: "power4.out",
             }
         )
 
@@ -50,6 +52,8 @@ function PageTransition() {
             },
             {
                 scaleX: "0",
+                duration: "0.7",
+                ease: "power4.out",
             },
             "+=0.7"
         );
