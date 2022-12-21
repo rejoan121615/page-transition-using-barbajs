@@ -50,7 +50,8 @@ function PageTransition() {
             },
             {
                 scaleX: "0",
-            }
+            },
+            "+=0.7"
         );
     return tl;
 }
@@ -92,7 +93,7 @@ barba.init({
             async leave(data) {
                 const done = this.async();
                 PageTransition();
-                await delay(500);
+                await delay(1000);
                 done();
             },
             async enter() {
